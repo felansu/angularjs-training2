@@ -2,7 +2,7 @@ angular
     .module('pdCurso')
     .controller('IndexController', IndexController);
 
-function IndexController($scope, toastr) {
+function IndexController($scope, PdAlertService) {
 
     // Declaração de variáveis
     $scope.pessoa = {};
@@ -33,11 +33,12 @@ function IndexController($scope, toastr) {
                     errorFields[i].$setTouched();
                 }
             });
-            toastr.error('Verifica os campos.', 'Erro!');
+            PdAlertService.showError('Verifica os campos.', 'Erro !');
             return;
         }
         $scope.listaPessoas.push($scope.pessoa);
         limpar();
+        PdAlertService.showSuccess('O registro foi salvo.', 'Sucesso !');
     }
 
     function limpar() {
@@ -48,7 +49,7 @@ function IndexController($scope, toastr) {
 
     function excluir(index) {
         $scope.listaPessoas.splice(index, 1);
-        toastr.success('O registro foi excluido.', 'Sucesso !');
+        PdAlertService.showSuccess('O registro foi excluido.', 'Sucesso !');
     }
 
     function editar(pessoa) {
