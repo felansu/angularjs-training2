@@ -1,2 +1,4 @@
 angular
-    .module('pdCurso', ['ngMessages']);
+    .module('pdCurso', [
+        'ngMessages', 'ngAnimate', 'toastr'
+    ]);

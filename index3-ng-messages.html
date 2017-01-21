@@ -10,11 +10,15 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="node_modules/angular-toastr/dist/angular-toastr.css">
 
     <!-- Imports internos -->
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/angular/angular.js"></script>
     <script src="node_modules/angular-messages/angular-messages.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.js"></script>
+    <script src="node_modules/angular-toastr/dist/angular-toastr.js"></script>
+    <script src="node_modules/angular-toastr/dist/angular-toastr.tpls.js"></script>
 
     <!-- Imports externos -->
     <script src="app/config/pd-app.module.js"></script>
@@ -26,7 +30,7 @@
 <div ng-controller="IndexController">
     <br/>
 
-    <form name="formPessoa" novalidate>
+    <form name="formPessoa" novalidate ng-submit="salvar()">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 Cadastro de pessoa
@@ -36,8 +40,8 @@
                     <div class="col-md-3">
                         <div class="form-group"
                              ng-class="{'has-error':formPessoa.nome.$invalid && formPessoa.nome.$touched}">
-                            <label class="control-label" for="itNome">Nome</label>
-                            <input id="itNome"
+                            <label class="control-label" for="nome">Nome</label>
+                            <input id="nome"
                                    type="text"
                                    class="form-control"
                                    ng-model="pessoa.nome"
@@ -67,7 +71,7 @@
 
                             <div class="help-block"
                                  ng-messages="formPessoa.sobrenome.$error"
-                                 ng-if="formPessoa.nome.$invalid && formPessoa.nome.$touched">
+                                 ng-if="formPessoa.sobrenome.$invalid && formPessoa.sobrenome.$touched">
                                 <div ng-messages-include="app/templates/ng-messages.html"></div>
                             </div>
                         </div>
@@ -79,14 +83,15 @@
                             <select id="sexo"
                                     class="form-control"
                                     ng-model="pessoa.sexo"
-                                    required name="sexo">
+                                    required
+                                    name="sexo">
                                 <option value="M">Masculino</option>
                                 <option value="F">Feminino</option>
                             </select>
 
                             <div class="help-block"
                                  ng-messages="formPessoa.sexo.$error"
-                                 ng-if="formPessoa.nome.$invalid && formPessoa.nome.$touched">
+                                 ng-if="formPessoa.sexo.$invalid && formPessoa.sexo.$touched">
                                 <div ng-messages-include="app/templates/ng-messages.html"></div>
                             </div>
                         </div>
@@ -99,11 +104,12 @@
                                    type="text"
                                    class="form-control"
                                    ng-model="pessoa.endereco"
-                                   required name="endereco">
+                                   required
+                                   name="endereco">
 
                             <div class="help-block"
                                  ng-messages="formPessoa.endereco.$error"
-                                 ng-if="formPessoa.nome.$invalid && formPessoa.nome.$touched">
+                                 ng-if="formPessoa.endereco.$invalid && formPessoa.endereco.$touched">
                                 <div ng-messages-include="app/templates/ng-messages.html"></div>
                             </div>
                         </div>
@@ -111,13 +117,13 @@
                 </div>
             </div>
             <div class="panel-footer">
-                <button class="btn btn-primary" ng-click="salvar()">Salvar</button>
+                <button class="btn btn-primary" type="submit">Salvar</button>
                 <button class="btn btn-warning" ng-click="limpar()">Limpar</button>
                 <button class="btn btn-danger" ng-click="excluir()">Excluir</button>
             </div>
         </div>
     </form>
-    <table class="table" ng-show="listaPessoas.length">
+    <table class="table" ng-if="listaPessoas.length">
         <tr>
             <th>Nome</th>
             <th>Sobrenome</th>

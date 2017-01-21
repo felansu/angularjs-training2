@@ -2,7 +2,7 @@ angular
     .module('pdCurso')
     .controller('IndexController', IndexController);
 
-function IndexController($scope) {
+function IndexController($scope, toastr) {
 
     // Declaração de variáveis
     $scope.pessoa = {};
@@ -28,20 +28,27 @@ function IndexController($scope) {
 
     function salvar() {
         if ($scope.formPessoa.$invalid) {
-            alert("Verifica os campos");
+            angular.forEach($scope.formPessoa.$error, function (errorFields) {
+                for (var i = 0; i < errorFields.length; i++) {
+                    errorFields[i].$setTouched();
+                }
+            });
+            toastr.error('Verifica os campos.', 'Erro!');
             return;
         }
         $scope.listaPessoas.push($scope.pessoa);
-        $scope.pessoa = {};
+        limpar();
     }
 
     function limpar() {
         $scope.pessoa = {};
-        angular.element('#itNome').focus();
+        angular.element('#nome').focus();
+        $scope.formPessoa.$setUntouched();
     }
 
     function excluir(index) {
         $scope.listaPessoas.splice(index, 1);
+        toastr.success('O registro foi excluido.', 'Sucesso !');
     }
 
     function editar(pessoa) {
