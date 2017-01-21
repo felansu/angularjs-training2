@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- Imports internos -->
+    <script src="../node_modules/angular/angular.js"></script>
+
+    <!-- Imports externos -->
+    <script src="config/pd-app.module.js"></script>
+    <script src="controller/index.controller.js"></script>
+
+</head>
+<body ng-app="pdCurso">
+
+<div ng-controller="IndexController">
+
+    <input type="text" ng-model="nome"/>
+    {{nome}}
+
+    <span ng-bind="nome"></span>
+    <button ng-click="onClickBotao()">Funcao 1</button>
+    <button ng-click="outraFunction()">Funcao 2</button>
+
+</div>
+
+</body>
+</html>
