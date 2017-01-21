@@ -33,6 +33,7 @@ function IndexController($scope) {
 
     function limpar() {
         $scope.pessoa = {};
+        angular.element('#itNome').focus();
     }
 
     function excluir(index) {

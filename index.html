@@ -5,18 +5,19 @@
     <title>Title</title>
 
     <!-- Imports internos -->
-    <script src="../node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular/angular.js"></script>
 
     <!-- Imports externos -->
-    <script src="config/pd-app.module.js"></script>
-    <script src="controller/index.controller.js"></script>
+    <script src="app/config/pd-app.module.js"></script>
+    <script src="app/controller/index.controller.js"></script>
 
 </head>
 <body ng-app="pdCurso">
 
 <div ng-controller="IndexController">
 
-    <input type="text" ng-model="nome"/>
+    <label for="nome"></label>
+    <input id="nome" type="text" ng-model="nome"/>
     {{nome}}
 
     <span ng-bind="nome"></span>

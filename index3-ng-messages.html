@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Title</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.css">
+
+    <!-- Imports internos -->
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-messages/angular-messages.js"></script>
+
+    <!-- Imports externos -->
+    <script src="app/config/pd-app.module.js"></script>
+    <script src="app/controller/index.controller.js"></script>
+
+</head>
+<body ng-app="pdCurso" class="container">
+
+<div ng-controller="IndexController">
+
+    <div class="row">
+        <div class="col-md-3" style="background-color: aliceblue">
+            <hr/>
+        </div>
+
+        <div class="col-md-3" style="background-color: cadetblue">
+            <hr/>
+        </div>
+
+        <div class="col-md-3" style="background-color: springgreen">
+            <hr/>
+        </div>
+
+        <div class="col-md-3" style="background-color: brown">
+            <hr/>
+        </div>
+    </div>
+
+    <br/>
+
+    <form name="formPessoa" novalidate>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Cadastro de pessoa
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group" ng-class="{'has-error':formPessoa.nome.$invalid}">
+                            <label class="control-label" for="itNome">Nome</label>
+                            <input id="itNome"
+                                   type="text"
+                                   class="form-control"
+                                   ng-model="pessoa.nome"
+                                   ng-minlength="3"
+                                   ng-maxlength="10"
+                                   required
+                                   name="nome">
+
+                            <div class="help-block" ng-messages="formPessoa.nome.$error">
+                                <div ng-messages-include="app/templates/ng-messages.html"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group" ng-class="{'has-error':formPessoa.sobrenome.$invalid}">
+                            <label class="control-label" for="sobrenome">Sobrenome</label>
+                            <input id="sobrenome"
+                                   type="text"
+                                   class="form-control"
+                                   ng-model="pessoa.sobrenome"
+                                   ng-required="pessoa.nome ? true : false"
+                                   ng-disabled="!pessoa.nome"
+                                   name="sobrenome">
+                            <div class="help-block" ng-messages="formPessoa.sobrenome.$error">
+                                <div ng-messages-include="app/templates/ng-messages.html"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group" ng-class="{'has-error':formPessoa.sexo.$invalid}">
+                            <label class="control-label" for="sexo">Sexo</label>
+                            <select id="sexo"
+                                    class="form-control"
+                                    ng-model="pessoa.sexo"
+                                    required name="sexo">
+                                <option value="M">Masculino</option>
+                                <option value="F">Feminino</option>
+                            </select>
+                            <div class="help-block" ng-messages="formPessoa.sexo.$error">
+                                <div ng-messages-include="app/templates/ng-messages.html"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group" ng-class="{'has-error':formPessoa.endereco.$invalid}">
+                            <label class="control-label" for="endereco">Endereço</label>
+                            <input id="endereco" type="text" class="form-control" ng-model="pessoa.endereco"
+                                   required name="endereco">
+                            <div class="help-block" ng-messages="formPessoa.endereco.$error">
+                                <div ng-messages-include="app/templates/ng-messages.html"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <button class="btn btn-primary" ng-click="salvar()" ng-disabled="formPessoa.$invalid">Salvar</button>
+                <button class="btn btn-warning" ng-click="limpar()">Limpar</button>
+                <button class="btn btn-danger" ng-click="excluir()">Excluir</button>
+            </div>
+        </div>
+    </form>
+    <table class="table" ng-show="listaPessoas.length">
+        <tr>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>Sexo</th>
+            <th>Ações</th>
+        </tr>
+        <tr ng-repeat="pessoa in listaPessoas">
+            <td ng-bind="::pessoa.nome"></td>
+            <td ng-bind="::pessoa.sobrenome"></td>
+            <td ng-bind="::pessoa.sexo"></td>
+            <td>
+                <button class="btn btn-primary" ng-click="editar(pessoa)">
+                    Editar
+                </button>
+                <button class="btn btn-danger" ng-click="excluir($index)">
+                    Excluir
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>
