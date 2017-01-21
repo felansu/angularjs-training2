@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "angular": "^1.6.1",
+    "angular-messages": "^1.6.1",
     "bootstrap": "^3.3.7"
   }
 }

@@ -1,2 +1,2 @@
 angular
-    .module('pdCurso', []);
+    .module('pdCurso', ['ngMessages']);
