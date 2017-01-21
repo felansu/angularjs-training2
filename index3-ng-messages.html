@@ -24,25 +24,6 @@
 <body ng-app="pdCurso" class="container">
 
 <div ng-controller="IndexController">
-
-    <div class="row">
-        <div class="col-md-3" style="background-color: aliceblue">
-            <hr/>
-        </div>
-
-        <div class="col-md-3" style="background-color: cadetblue">
-            <hr/>
-        </div>
-
-        <div class="col-md-3" style="background-color: springgreen">
-            <hr/>
-        </div>
-
-        <div class="col-md-3" style="background-color: brown">
-            <hr/>
-        </div>
-    </div>
-
     <br/>
 
     <form name="formPessoa" novalidate>
@@ -53,7 +34,8 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-3">
-                        <div class="form-group" ng-class="{'has-error':formPessoa.nome.$invalid}">
+                        <div class="form-group"
+                             ng-class="{'has-error':formPessoa.nome.$invalid && formPessoa.nome.$touched}">
                             <label class="control-label" for="itNome">Nome</label>
                             <input id="itNome"
                                    type="text"
@@ -62,15 +44,18 @@
                                    ng-minlength="3"
                                    ng-maxlength="10"
                                    required
-                                   name="nome">
-
-                            <div class="help-block" ng-messages="formPessoa.nome.$error">
+                                   name="nome"
+                            >
+                            <div class="help-block"
+                                 ng-messages="formPessoa.nome.$error"
+                                 ng-if="formPessoa.nome.$invalid && formPessoa.nome.$touched">
                                 <div ng-messages-include="app/templates/ng-messages.html"></div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="form-group" ng-class="{'has-error':formPessoa.sobrenome.$invalid}">
+                        <div class="form-group"
+                             ng-class="{'has-error':formPessoa.sobrenome.$invalid && formPessoa.sobrenome.$touched}">
                             <label class="control-label" for="sobrenome">Sobrenome</label>
                             <input id="sobrenome"
                                    type="text"
@@ -79,13 +64,17 @@
                                    ng-required="pessoa.nome ? true : false"
                                    ng-disabled="!pessoa.nome"
                                    name="sobrenome">
-                            <div class="help-block" ng-messages="formPessoa.sobrenome.$error">
+
+                            <div class="help-block"
+                                 ng-messages="formPessoa.sobrenome.$error"
+                                 ng-if="formPessoa.nome.$invalid && formPessoa.nome.$touched">
                                 <div ng-messages-include="app/templates/ng-messages.html"></div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="form-group" ng-class="{'has-error':formPessoa.sexo.$invalid}">
+                        <div class="form-group"
+                             ng-class="{'has-error':formPessoa.sexo.$invalid && formPessoa.sexo.$touched}">
                             <label class="control-label" for="sexo">Sexo</label>
                             <select id="sexo"
                                     class="form-control"
@@ -94,17 +83,27 @@
                                 <option value="M">Masculino</option>
                                 <option value="F">Feminino</option>
                             </select>
-                            <div class="help-block" ng-messages="formPessoa.sexo.$error">
+
+                            <div class="help-block"
+                                 ng-messages="formPessoa.sexo.$error"
+                                 ng-if="formPessoa.nome.$invalid && formPessoa.nome.$touched">
                                 <div ng-messages-include="app/templates/ng-messages.html"></div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="form-group" ng-class="{'has-error':formPessoa.endereco.$invalid}">
+                        <div class="form-group"
+                             ng-class="{'has-error':formPessoa.endereco.$invalid && formPessoa.endereco.$touched}">
                             <label class="control-label" for="endereco">Endereço</label>
-                            <input id="endereco" type="text" class="form-control" ng-model="pessoa.endereco"
+                            <input id="endereco"
+                                   type="text"
+                                   class="form-control"
+                                   ng-model="pessoa.endereco"
                                    required name="endereco">
-                            <div class="help-block" ng-messages="formPessoa.endereco.$error">
+
+                            <div class="help-block"
+                                 ng-messages="formPessoa.endereco.$error"
+                                 ng-if="formPessoa.nome.$invalid && formPessoa.nome.$touched">
                                 <div ng-messages-include="app/templates/ng-messages.html"></div>
                             </div>
                         </div>
@@ -112,7 +111,7 @@
                 </div>
             </div>
             <div class="panel-footer">
-                <button class="btn btn-primary" ng-click="salvar()" ng-disabled="formPessoa.$invalid">Salvar</button>
+                <button class="btn btn-primary" ng-click="salvar()">Salvar</button>
                 <button class="btn btn-warning" ng-click="limpar()">Limpar</button>
                 <button class="btn btn-danger" ng-click="excluir()">Excluir</button>
             </div>

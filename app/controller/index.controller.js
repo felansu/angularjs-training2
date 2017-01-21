@@ -27,6 +27,10 @@ function IndexController($scope) {
     }
 
     function salvar() {
+        if ($scope.formPessoa.$invalid) {
+            alert("Verifica os campos");
+            return;
+        }
         $scope.listaPessoas.push($scope.pessoa);
         $scope.pessoa = {};
     }
