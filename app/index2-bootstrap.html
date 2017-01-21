@@ -94,9 +94,9 @@
             <th>Ações</th>
         </tr>
         <tr ng-repeat="pessoa in listaPessoas">
-            <td ng-bind="pessoa.nome"></td>
-            <td ng-bind="pessoa.sobrenome"></td>
-            <td ng-bind="pessoa.sexo"></td>
+            <td ng-bind="::pessoa.nome"></td>
+            <td ng-bind="::pessoa.sobrenome"></td>
+            <td ng-bind="::pessoa.sexo"></td>
             <td>
                 <button class="btn btn-primary" ng-click="editar(pessoa)">
                     Editar
