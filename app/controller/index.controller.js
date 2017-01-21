@@ -2,7 +2,7 @@ angular
     .module('pdCurso')
     .controller('IndexController', IndexController);
 
-function IndexController($scope, PdAlertService) {
+function IndexController($scope, PdAlertService, $filter) {
 
     // Declaração de variáveis
     $scope.pessoa = {};
@@ -36,9 +36,12 @@ function IndexController($scope, PdAlertService) {
             PdAlertService.showError('Verifica os campos.', 'Erro !');
             return;
         }
+
+        var dataNascimentoFormatada = $filter('date')($scope.pessoa.dataNascimento, 'dd/MM/yyyy');
+
         $scope.listaPessoas.push($scope.pessoa);
         limpar();
-        PdAlertService.showSuccess('O registro foi salvo.', 'Sucesso !');
+        PdAlertService.showSuccess(dataNascimentoFormatada);
     }
 
     function limpar() {

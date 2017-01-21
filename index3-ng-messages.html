@@ -97,20 +97,38 @@
                             </div>
                         </div>
                     </div>
+                    <!--<div class="col-md-3">-->
+                    <!--<div class="form-group"-->
+                    <!--ng-class="{'has-error':formPessoa.endereco.$invalid && formPessoa.endereco.$touched}">-->
+                    <!--<label class="control-label" for="endereco">Endereço</label>-->
+                    <!--<input id="endereco"-->
+                    <!--type="text"-->
+                    <!--class="form-control"-->
+                    <!--ng-model="pessoa.endereco"-->
+                    <!--required-->
+                    <!--name="endereco">-->
+
+                    <!--<div class="help-block"-->
+                    <!--ng-messages="formPessoa.endereco.$error"-->
+                    <!--ng-if="formPessoa.endereco.$invalid && formPessoa.endereco.$touched">-->
+                    <!--<div ng-messages-include="app/templates/ng-messages.html"></div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
                     <div class="col-md-3">
                         <div class="form-group"
-                             ng-class="{'has-error':formPessoa.endereco.$invalid && formPessoa.endereco.$touched}">
-                            <label class="control-label" for="endereco">Endereço</label>
-                            <input id="endereco"
-                                   type="text"
+                             ng-class="{'has-error':formPessoa.dataNascimento.$invalid && formPessoa.dataNascimento.$touched}">
+                            <label class="control-label" for="dataNascimento">Data Nascimento</label>
+                            <input id="dataNascimento"
+                                   type="date"
                                    class="form-control"
-                                   ng-model="pessoa.endereco"
+                                   ng-model="pessoa.dataNascimento"
                                    required
-                                   name="endereco">
-
+                                   name="dataNascimento"
+                            >
                             <div class="help-block"
-                                 ng-messages="formPessoa.endereco.$error"
-                                 ng-if="formPessoa.endereco.$invalid && formPessoa.endereco.$touched">
+                                 ng-messages="formPessoa.dataNascimento.$error"
+                                 ng-if="formPessoa.dataNascimento.$invalid && formPessoa.dataNascimento.$touched">
                                 <div ng-messages-include="app/templates/ng-messages.html"></div>
                             </div>
                         </div>
@@ -129,12 +147,14 @@
             <th>Nome</th>
             <th>Sobrenome</th>
             <th>Sexo</th>
+            <th>Data Nascimento</th>
             <th>Ações</th>
         </tr>
         <tr ng-repeat="pessoa in listaPessoas">
             <td ng-bind="::pessoa.nome"></td>
             <td ng-bind="::pessoa.sobrenome"></td>
             <td ng-bind="::pessoa.sexo"></td>
+            <td ng-bind="::pessoa.dataNascimento | date : 'dd/MM/yyyy'"></td>
             <td>
                 <button class="btn btn-primary" ng-click="editar(pessoa)">
                     Editar
