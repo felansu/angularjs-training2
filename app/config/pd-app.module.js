@@ -5,7 +5,8 @@ angular
         'toastr',
         'ui.grid',
         'ui.grid.selection',
-        'ngMaterial'
+        'ngMaterial',
+        'ui.router'
     ]).config(function ($compileProvider) {
 
     // Correção de incompatibilidade angularjs 1.6
