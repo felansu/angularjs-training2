@@ -21,7 +21,13 @@ function IndexController($scope, PdAlertService, $filter) {
                 name: 'Data de Nascimento',
                 field: 'dataNascimento',
                 width: 250,
-                cellTemplate: 'templates/cell-template-date'
+                cellTemplate: 'templates/cell-template-date.html'
+            },
+            {
+                name: 'Ações',
+                width: 100,
+                cellTemplate: 'templates/cell-template-actions.html',
+                onClick: excluir
             }
         ]
     };
