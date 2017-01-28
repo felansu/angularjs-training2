@@ -121,6 +121,16 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="cor">Cor</label>
+                            <input id="cor"
+                                   type="text"
+                                   class="form-control"
+                                   ng-model="pessoa.cor"
+                                   name="cor">
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="panel-footer">
@@ -139,7 +149,8 @@
             </div>
         </div>
     </form>
-    <div ui-grid="gridOptions"></div>
+    <div ui-grid="gridOptions"
+         ui-grid-selection></div>
 </div>
 
 </body>

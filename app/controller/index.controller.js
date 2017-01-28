@@ -13,6 +13,8 @@ function IndexController($scope, PdAlertService, $filter) {
     $scope.gridOptions = {
         data: 'listaPessoas',
         enableColumnMenus: false,
+        enableRowSelection: true,
+        rowTemplate: 'templates/row-template.html',
         columnDefs: [
             {name: 'Nome', field: 'nome'},
             {name: 'Sobrenome', field: 'sobrenome', width: 250},
@@ -40,14 +42,15 @@ function IndexController($scope, PdAlertService, $filter) {
     $scope.limpar = limpar;
     $scope.excluir = excluir;
     $scope.editar = editar;
+    $scope.getStyleDaLinha = getStyleDaLinha;
 
     // Declaração de funções
     function onClickBotao() {
-        alert("Opa, funcao 1")
+        alert("Opa, funcao 1");
     }
 
     function outraFunction() {
-        alert("Opa, funcao 2")
+        alert("Opa, funcao 2");
     }
 
     function salvar() {
@@ -81,5 +84,14 @@ function IndexController($scope, PdAlertService, $filter) {
 
     function editar(pessoa) {
         $scope.pessoa = pessoa;
+    }
+
+    function getStyleDaLinha(linhaSelecionada) {
+        var style = {};
+        if (linhaSelecionada.cor) {
+            style.backgroundColor = linhaSelecionada.cor;
+        }
+
+        return style;
     }
 }

@@ -1,4 +1,8 @@
 angular
     .module('pdCurso', [
-        'ngMessages', 'ngAnimate', 'toastr', 'ui.grid'
+        'ngMessages',
+        'ngAnimate',
+        'toastr',
+        'ui.grid',
+        'ui.grid.selection'
     ]);
