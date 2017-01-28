@@ -4,5 +4,6 @@ angular
         'ngAnimate',
         'toastr',
         'ui.grid',
-        'ui.grid.selection'
+        'ui.grid.selection',
+        'ngMaterial'
     ]);
