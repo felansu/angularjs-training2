@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Title</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="node_modules/angular-toastr/dist/angular-toastr.css">
+
+    <!-- Imports internos -->
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-messages/angular-messages.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.js"></script>
+    <script src="node_modules/angular-toastr/dist/angular-toastr.js"></script>
+    <script src="node_modules/angular-toastr/dist/angular-toastr.tpls.js"></script>
+
+    <!-- Imports externos -->
+    <script src="app/config/pd-app.module.js"></script>
+    <script src="app/controller/index4.controller.js"></script>
+    <script src="app/services/pd-alert.services.js"></script>
+    <script src="app/filters/pd-maiusculas.filter.js"></script>
+
+    <style>
+        .div1 {
+            background-color: chartreuse;
+            border: 10px;
+            border-color: teal;
+            width: 200px;
+            height: 200px;
+        }
+
+        .div2 {
+            background-color: red;
+            border: 10px;
+            border-color: teal;
+            width: 200px;
+            height: 200px;
+        }
+
+        .div3 {
+            background-color: blue;
+            border: 10px;
+            border-color: teal;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body ng-app="pdCurso" class="container">
+
+<div ng-controller="IndexController">
+    <label for="cor" class="control-label" ng-style="cssDaDiv">Cor</label>
+    <input id="cor" class="form-control" type="text" ng-model="cor">
+
+    <div ng-class="classeCss"></div>
+
+    <div ng-class="{'div2': cor === '1'}"></div>
+</div>
+
+</body>
+</html>
