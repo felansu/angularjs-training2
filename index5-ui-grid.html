@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Title</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="node_modules/angular-toastr/dist/angular-toastr.css">
+    <link rel="stylesheet" href="node_modules/angular-ui-grid/ui-grid.css">
+
+    <!-- Font Awesome-->
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
+
+    <!-- Imports internos -->
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-messages/angular-messages.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.js"></script>
+    <script src="node_modules/angular-toastr/dist/angular-toastr.js"></script>
+    <script src="node_modules/angular-toastr/dist/angular-toastr.tpls.js"></script>
+    <script src="node_modules/angular-ui-grid/ui-grid.js"></script>
+
+    <!-- Imports externos -->
+    <script src="app/config/pd-app.module.js"></script>
+    <script src="app/controller/index.controller.js"></script>
+    <script src="app/services/pd-alert.services.js"></script>
+    <script src="app/filters/pd-maiusculas.filter.js"></script>
+
+</head>
+<body ng-app="pdCurso" class="container">
+
+<div ng-controller="IndexController">
+    <br/>
+
+    <form name="formPessoa" novalidate ng-submit="salvar()">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Cadastro de pessoa
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group"
+                             ng-class="{'has-error':formPessoa.nome.$invalid && formPessoa.nome.$touched}">
+                            <label class="control-label" for="nome">Nome</label>
+                            <input id="nome"
+                                   type="text"
+                                   class="form-control"
+                                   ng-model="pessoa.nome"
+                                   ng-minlength="3"
+                                   ng-maxlength="10"
+                                   required
+                                   name="nome"
+                            >
+                            <div class="help-block"
+                                 ng-messages="formPessoa.nome.$error"
+                                 ng-if="formPessoa.nome.$invalid && formPessoa.nome.$touched">
+                                <div ng-messages-include="app/templates/ng-messages.html"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group"
+                             ng-class="{'has-error':formPessoa.sobrenome.$invalid && formPessoa.sobrenome.$touched}">
+                            <label class="control-label" for="sobrenome">Sobrenome</label>
+                            <input id="sobrenome"
+                                   type="text"
+                                   class="form-control"
+                                   ng-model="pessoa.sobrenome"
+                                   ng-required="pessoa.nome ? true : false"
+                                   ng-disabled="!pessoa.nome"
+                                   name="sobrenome">
+
+                            <div class="help-block"
+                                 ng-messages="formPessoa.sobrenome.$error"
+                                 ng-if="formPessoa.sobrenome.$invalid && formPessoa.sobrenome.$touched">
+                                <div ng-messages-include="app/templates/ng-messages.html"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group"
+                             ng-class="{'has-error':formPessoa.sexo.$invalid && formPessoa.sexo.$touched}">
+                            <label class="control-label" for="sexo">Sexo</label>
+                            <select id="sexo"
+                                    class="form-control"
+                                    ng-model="pessoa.sexo"
+                                    required
+                                    name="sexo">
+                                <option value="M">Masculino</option>
+                                <option value="F">Feminino</option>
+                            </select>
+
+                            <div class="help-block"
+                                 ng-messages="formPessoa.sexo.$error"
+                                 ng-if="formPessoa.sexo.$invalid && formPessoa.sexo.$touched">
+                                <div ng-messages-include="app/templates/ng-messages.html"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group"
+                             ng-class="{'has-error':formPessoa.dataNascimento.$invalid && formPessoa.dataNascimento.$touched}">
+                            <label class="control-label" for="dataNascimento">Data Nascimento</label>
+                            <input id="dataNascimento"
+                                   type="date"
+                                   class="form-control"
+                                   ng-model="pessoa.dataNascimento"
+                                   required
+                                   name="dataNascimento"
+                            >
+                            <div class="help-block"
+                                 ng-messages="formPessoa.dataNascimento.$error"
+                                 ng-if="formPessoa.dataNascimento.$invalid && formPessoa.dataNascimento.$touched">
+                                <div ng-messages-include="app/templates/ng-messages.html"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <button class="btn btn-primary" type="submit">
+                    <i class="fa fa-save"></i>
+                    Salvar
+                </button>
+                <button class="btn btn-warning" ng-click="limpar()">
+                    <i class="fa fa-eraser"></i>
+                    Limpar
+                </button>
+                <button class="btn btn-danger" ng-click="excluir()">
+                    <i class="fa fa-trash"></i>
+                    Excluir
+                </button>
+            </div>
+        </div>
+    </form>
+    <div ui-grid="gridOptions"></div>
+</div>
+
+</body>
+</html>

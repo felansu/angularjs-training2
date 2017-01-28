@@ -10,6 +10,22 @@ function IndexController($scope, PdAlertService, $filter) {
     $scope.pessoa = {};
     $scope.listaPessoas = [];
 
+    $scope.gridOptions = {
+        data: 'listaPessoas',
+        enableColumnMenus: false,
+        columnDefs: [
+            {name: 'Nome', field: 'nome'},
+            {name: 'Sobrenome', field: 'sobrenome', width: 250},
+            {name: 'Sexo', field: 'sexo', width: 250},
+            {
+                name: 'Data de Nascimento',
+                field: 'dataNascimento',
+                width: 250,
+                cellTemplate: 'templates/cell-template-date'
+            }
+        ]
+    };
+
     // Publicação de funções
     $scope.onClickBotao = onClickBotao;
     $scope.outraFunction = outraFunction;
