@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.css">
     <link rel="stylesheet" href="node_modules/angular-toastr/dist/angular-toastr.css">
 
+    <!-- Font Awesome-->
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
+
     <!-- Imports internos -->
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/angular/angular.js"></script>
@@ -137,9 +140,18 @@
                 </div>
             </div>
             <div class="panel-footer">
-                <button class="btn btn-primary" type="submit">Salvar</button>
-                <button class="btn btn-warning" ng-click="limpar()">Limpar</button>
-                <button class="btn btn-danger" ng-click="excluir()">Excluir</button>
+                <button class="btn btn-primary" type="submit">
+                    <i class="fa fa-save"></i>
+                    Salvar
+                </button>
+                <button class="btn btn-warning" ng-click="limpar()">
+                    <i class="fa fa-eraser"></i>
+                    Limpar
+                </button>
+                <button class="btn btn-danger" ng-click="excluir()">
+                    <i class="fa fa-trash"></i>
+                    Excluir
+                </button>
             </div>
         </div>
     </form>
