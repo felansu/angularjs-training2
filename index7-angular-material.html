@@ -36,10 +36,9 @@
     <script src="app/services/pd-alert.services.js"></script>
     <script src="app/filters/pd-maiusculas.filter.js"></script>
 
-
 </head>
 <body ng-app="pdCurso" class="container">
-<div ng-controller="IndexController">
+<div ng-controller="IndexController" ng-cloak>
     <br/>
 
     <form name="formPessoa" novalidate ng-submit="salvar()">
@@ -90,7 +89,40 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="col-md-3">
+                        <div class="form-group"
+                             ng-class="{'has-error':formPessoa.sexo.$invalid && formPessoa.sexo.$touched}">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Sexo</label>
+                                <md-select ng-model="pessoa.sexo"
+                                           required="true"
+                                           name="sexo"
+                                           id="sexo">
+                                    <md-option value="H">Homem</md-option>
+                                    <md-option value="M">Mulher</md-option>
+                                </md-select>
+                            </md-input-container>
+                            <div class="help-block"
+                                 ng-messages="formPessoa.sexo.$error"
+                                 ng-if="formPessoa.sexo.$invalid && formPessoa.sexo.$touched">
+                                <div ng-messages-include="app/templates/ng-messages.html"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group"
+                             ng-class="{'has-error':formPessoa.dataNascimento.$invalid && formPessoa.dataNascimento.$touched}">
+                            <md-input-container>
+                                <label>Data de nascimento</label>
+                                <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>
+                            </md-input-container>
+                            <div class="help-block"
+                                 ng-messages="formPessoa.dataNascimento.$error"
+                                 ng-if="formPessoa.dataNascimento.$invalid && formPessoa.dataNascimento.$touched">
+                                <div ng-messages-include="app/templates/ng-messages.html"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="panel-footer">

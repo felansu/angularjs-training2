@@ -1,97 +1,104 @@
-angular
-    .module('pdCurso')
-    .controller('IndexController', IndexController);
+(function () {
+    'use strict';
 
-IndexController.$inject = ['$scope', 'PdAlertService', '$filter'];
+    angular
+        .module('pdCurso')
+        .controller('IndexController', IndexController);
 
-function IndexController($scope, PdAlertService, $filter) {
+    IndexController.$inject = ['$scope', 'PdAlertService', '$filter'];
 
-    // Declaração de variáveis
-    $scope.pessoa = {};
-    $scope.listaPessoas = [];
+    function IndexController($scope, PdAlertService, $filter) {
 
-    $scope.gridOptions = {
-        data: 'listaPessoas',
-        enableColumnMenus: false,
-        enableRowSelection: true,
-        rowTemplate: 'templates/row-template.html',
-        columnDefs: [
-            {name: 'Nome', field: 'nome'},
-            {name: 'Sobrenome', field: 'sobrenome', width: 250},
-            {name: 'Sexo', field: 'sexo', width: 250},
-            {
-                name: 'Data de Nascimento',
-                field: 'dataNascimento',
-                width: 250,
-                cellTemplate: 'templates/cell-template-date.html'
-            },
-            {
-                name: 'Ações',
-                width: 100,
-                cellTemplate: 'templates/cell-template-actions.html',
-                onClick: excluir
-            }
-        ]
-    };
-
-    // Publicação de funções
-    $scope.onClickBotao = onClickBotao;
-    $scope.outraFunction = outraFunction;
-
-    $scope.salvar = salvar;
-    $scope.limpar = limpar;
-    $scope.excluir = excluir;
-    $scope.editar = editar;
-    $scope.getStyleDaLinha = getStyleDaLinha;
-
-    // Declaração de funções
-    function onClickBotao() {
-        alert("Opa, funcao 1");
-    }
-
-    function outraFunction() {
-        alert("Opa, funcao 2");
-    }
-
-    function salvar() {
-        if ($scope.formPessoa.$invalid) {
-            angular.forEach($scope.formPessoa.$error, function (errorFields) {
-                for (var i = 0; i < errorFields.length; i++) {
-                    errorFields[i].$setTouched();
-                }
-            });
-            PdAlertService.showError('Verifica os campos.', 'Erro !');
-            return;
-        }
-
-        var dataNascimentoFormatada = $filter('date')($scope.pessoa.dataNascimento, 'dd/MM/yyyy');
-
-        $scope.listaPessoas.push($scope.pessoa);
-        limpar();
-        PdAlertService.showSuccess(dataNascimentoFormatada);
-    }
-
-    function limpar() {
+        // Declaração de variáveis
         $scope.pessoa = {};
-        angular.element('#nome').focus();
-        $scope.formPessoa.$setUntouched();
-    }
+        $scope.listaPessoas = [];
 
-    function excluir(index) {
-        $scope.listaPessoas.splice(index, 1);
-        PdAlertService.showSuccess('O registro foi excluido.', 'Sucesso !');
-    }
+        $scope.myDate = new Date();
 
-    function editar(pessoa) {
-        $scope.pessoa = pessoa;
-    }
+        $scope.gridOptions = {
+            data: 'listaPessoas',
+            enableColumnMenus: false,
+            enableRowSelection: true,
+            rowTemplate: 'templates/row-template.html',
+            columnDefs: [
+                {name: 'Nome', field: 'nome'},
+                {name: 'Sobrenome', field: 'sobrenome', width: 250},
+                {name: 'Sexo', field: 'sexo', width: 250},
+                {
+                    name: 'Data de Nascimento',
+                    field: 'dataNascimento',
+                    width: 250,
+                    cellTemplate: 'templates/cell-template-date.html'
+                },
+                {
+                    name: 'Ações',
+                    width: 100,
+                    cellTemplate: 'templates/cell-template-actions.html',
+                    onClick: excluir
+                }
+            ]
+        };
 
-    function getStyleDaLinha(linhaSelecionada) {
-        var style = {};
-        if (linhaSelecionada.cor) {
-            style.backgroundColor = linhaSelecionada.cor;
+        // Publicação de funções
+        $scope.onClickBotao = onClickBotao;
+        $scope.outraFunction = outraFunction;
+
+        $scope.salvar = salvar;
+        $scope.limpar = limpar;
+        $scope.excluir = excluir;
+        $scope.editar = editar;
+        $scope.getStyleDaLinha = getStyleDaLinha;
+
+        // Declaração de funções
+        function onClickBotao() {
+            alert("Opa, funcao 1");
         }
 
-        return style;
+        function outraFunction() {
+            alert("Opa, funcao 2");
+        }
+
+        function salvar() {
+            if ($scope.formPessoa.$invalid) {
+                angular.forEach($scope.formPessoa.$error, function (errorFields) {
+                    for (var i = 0; i < errorFields.length; i++) {
+                        errorFields[i].$setTouched();
+                    }
+                });
+                PdAlertService.showError('Verifica os campos.', 'Erro !');
+                return;
+            }
+
+            var dataNascimentoFormatada = $filter('date')($scope.pessoa.dataNascimento, 'dd/MM/yyyy');
+
+            $scope.listaPessoas.push($scope.pessoa);
+            limpar();
+            PdAlertService.showSuccess(dataNascimentoFormatada);
+        }
+
+        function limpar() {
+            $scope.pessoa = {};
+            angular.element('#nome').focus();
+            $scope.formPessoa.$setUntouched();
+        }
+
+        function excluir(index) {
+            $scope.listaPessoas.splice(index, 1);
+            PdAlertService.showSuccess('O registro foi excluido.', 'Sucesso !');
+        }
+
+        function editar(pessoa) {
+            $scope.pessoa = pessoa;
+        }
+
+        function getStyleDaLinha(linhaSelecionada) {
+            var style = {};
+            if (linhaSelecionada.cor) {
+                style.backgroundColor = linhaSelecionada.cor;
+            }
+
+            return style;
+        }
     }
-}
+
+})();

@@ -1,5 +1,6 @@
 (function () {
     'use strict';
+
     angular
         .module('pdCurso')
         .controller('Index6Controller', IndexController);
