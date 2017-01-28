@@ -2,6 +2,8 @@ angular
     .module('pdCurso')
     .controller('IndexController', IndexController);
 
+IndexController.$inject = ['$scope', 'PdAlertService', '$filter'];
+
 function IndexController($scope, PdAlertService, $filter) {
 
     // Declaração de variáveis
