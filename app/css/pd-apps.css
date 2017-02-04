@@ -1,0 +1,9 @@
+#loading-bar-spinner .spinner-icon {
+    width: 1200px;
+    height: 1200px;
+    background: brown;
+    border:  dashed 600px;
+    border-top-color:  #29d;
+    border-left-color: #29d;
+    border-radius: 100%;
+}

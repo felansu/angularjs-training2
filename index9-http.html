@@ -19,6 +19,10 @@
     <!-- Angular Material-->
     <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
 
+    <!-- Angular Loading Bar-->
+    <link rel="stylesheet" href="node_modules/angular-loading-bar/build/loading-bar.css">
+    <link rel="stylesheet" href="app/css/pd-apps.css">
+
     <!-- Imports internos -->
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/angular/angular.js"></script>
@@ -31,6 +35,7 @@
     <script src="node_modules/angular-toastr/dist/angular-toastr.tpls.js"></script>
     <script src="node_modules/angular-ui-grid/ui-grid.js"></script>
     <script src="node_modules/angular-material/angular-material.js"></script>
+    <script src="node_modules/angular-loading-bar/build/loading-bar.js"></script>
 
     <!-- Imports externos -->
     <script src="app/config/pd-app.module.js"></script>
@@ -43,10 +48,11 @@
 <body ng-app="pdCurso" class="container" ng-controller="Index9Controller as vm" ng-cloak>
 
 <div>
-    <md-button class="md-raised md-primary" ng-click="vm.carregarListaDeDados()">Cadastro
+    <md-button class="md-raised md-primary" ng-click="vm.carregarListaDeDados()">Chama lá !
     </md-button>
 </div>
 <div ui-grid="vm.gridOptions"/>
+{{vm.listaDeDados.length}}
 <!-- views -->
 <div>
     <div ui-view></div>

@@ -10,7 +10,8 @@
             'ui.grid.selection',
             'ngMaterial',
             'ui.router',
-            'oc.lazyLoad'
+            'oc.lazyLoad',
+            'angular-loading-bar'
         ]).config(compileProvider);
 
     /*@ngInject*/
