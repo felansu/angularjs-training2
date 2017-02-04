@@ -1,5 +1,7 @@
-<div class="form-group">
+<div class="form-group"
+     ng-class="{'has-error':formCtrl[inputName].$invalid && formCtrl[inputName].$touched}">
     <i class="fa fa-battery text-danger" ng-if="ngRequired"></i>
+
     <label ng-bind="label"
            class="control-label">
     </label>
@@ -7,5 +9,11 @@
     <input type="text"
            class="form-control"
            ng-model="ngModel"
-           ng-required="ngRequired">
+           ng-required="ngRequired"
+           name="{{::inputName}}">
+    <div class="help-block"
+         ng-messages="formCtrl[inputName].$error"
+         ng-if="formCtrl[inputName].$invalid && formCtrl[inputName].$touched">
+        <div ng-messages-include="app/templates/ng-messages.html"></div>
+    </div>
 </div>

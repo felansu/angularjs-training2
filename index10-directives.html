@@ -49,19 +49,21 @@
 </head>
 <body ng-app="pdCurso" class="container" ng-cloak ng-controller="Index10Controller as vm">
 
-<div>
-    <pd-hello-world></pd-hello-world>
-    <div pd-hello-world></div>
-    <hr>
-    <pd-input-text
-            label="Nome"
-            ng-model="vm.pessoa.nome"
-            ng-required="true">
+<form>
+    <div>
+        <pd-hello-world></pd-hello-world>
+        <div pd-hello-world></div>
 
-    </pd-input-text>
+        <hr>
 
-    {{vm.pessoa.nome}}
-</div>
+        <pd-input-text
+                label="Nome"
+                ng-model="vm.pessoa.nome"
+                ng-required="true">
+        </pd-input-text>
+
+    </div>
+</form>
 
 </body>
 </html>
