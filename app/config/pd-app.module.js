@@ -6,7 +6,8 @@ angular
         'ui.grid',
         'ui.grid.selection',
         'ngMaterial',
-        'ui.router'
+        'ui.router',
+        'oc.lazyLoad'
     ]).config(function ($compileProvider) {
 
     // Correção de incompatibilidade angularjs 1.6
