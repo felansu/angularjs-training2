@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Title</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="node_modules/angular-toastr/dist/angular-toastr.css">
+    <link rel="stylesheet" href="node_modules/angular-ui-grid/ui-grid.css">
+
+    <!-- Font Awesome-->
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
+
+    <!-- Angular Material-->
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
+
+    <!-- Imports internos -->
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="node_modules/oclazyload/dist/ocLazyLoad.js"></script>
+    <script src="node_modules/angular-messages/angular-messages.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.js"></script>
+    <script src="node_modules/angular-aria/angular-aria.js"></script>
+    <script src="node_modules/angular-toastr/dist/angular-toastr.js"></script>
+    <script src="node_modules/angular-toastr/dist/angular-toastr.tpls.js"></script>
+    <script src="node_modules/angular-ui-grid/ui-grid.js"></script>
+    <script src="node_modules/angular-material/angular-material.js"></script>
+
+    <!-- Imports externos -->
+    <script src="app/config/pd-app.module.js"></script>
+    <script src="app/config/pd-rotas.config.js"></script>
+    <script src="app/controller/index9.controller.js"></script>
+    <script src="app/services/pd-alert.services.js"></script>
+    <script src="app/filters/pd-maiusculas.filter.js"></script>
+
+</head>
+<body ng-app="pdCurso" class="container" ng-controller="Index9Controller as vm" ng-cloak>
+
+<div>
+    <md-button class="md-raised md-primary" ng-click="vm.carregarListaDeDados()">Cadastro
+    </md-button>
+</div>
+<div ui-grid="vm.gridOptions"/>
+<!-- views -->
+<div>
+    <div ui-view></div>
+</div>
+
+</body>
+</html>
