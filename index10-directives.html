@@ -45,6 +45,8 @@
     <script src="app/filters/pd-maiusculas.filter.js"></script>
     <script src="arquitetura/directives/pd-hello-world/pd-hello-world.directive.js"></script>
     <script src="arquitetura/directives/pd-input-text/pd-input-text.directives.js"></script>
+    <script src="arquitetura/directives/pd-select/pd-select.js"></script>
+
 
 </head>
 <body ng-app="pdCurso" class="container" ng-cloak ng-controller="Index10Controller as vm">
@@ -62,8 +64,14 @@
                 ng-required="true">
         </pd-input-text>
 
+        <pd-select label="Sexo"
+                   ng-model="vm.pessoa.sexo"
+                   ng-required="true"
+                   provider="vm.sexo">
+        </pd-select>
+
     </div>
 </form>
-
+{{vm.pessoa}}
 </body>
 </html>
