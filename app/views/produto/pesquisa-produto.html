@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Pesquisa de produtos</h2>
+            <div id="custom-search-input">
+                <div class="input-group col-md-12">
+                    <input type="text" class="form-control input" placeholder="Buscar" ng-model="query"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-info btn" type="button">Pesquisar</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-if="vm.listaProdutos.length">
+        <div class="col-md-8">
+            <h2>Lista de produtos</h2>
+            <table class="table">
+                <tr>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                    <th>Ações</th>
+                </tr>
+                <tr ng-repeat="produto in vm.listaProdutos | filter: query">
+                    <td ng-bind="produto.descricao"></td>
+                    <td ng-bind="produto.valor"></td>
+                    <td>
+                        <button class="btn btn-primary" ng-click="vm.alterarRota('cadastroProduto', $index)">
+                            Editar
+                        </button>
+                        <button class="btn btn-danger" ng-click="vm.excluir($index)">
+                            Excluir
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

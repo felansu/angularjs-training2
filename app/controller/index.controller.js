@@ -5,17 +5,17 @@
         .module('pdCurso')
         .controller('IndexController', IndexController);
 
-    IndexController.$inject = ['$scope', 'PdAlertService', '$filter'];
-
+    /* @ngInject */
     function IndexController($scope, PdAlertService, $filter) {
 
-        // Declaração de variáveis
-        $scope.pessoa = {};
-        $scope.listaPessoas = [];
+        var vm = this;
 
-        $scope.myDate = new Date();
+        vm.pessoa = {};
+        vm.listaPessoas = [];
 
-        $scope.gridOptions = {
+        vm.myDate = new Date();
+
+        vm.gridOptions = {
             data: 'listaPessoas',
             enableColumnMenus: false,
             enableRowSelection: true,
@@ -39,28 +39,26 @@
             ]
         };
 
-        // Publicação de funções
-        $scope.onClickBotao = onClickBotao;
-        $scope.outraFunction = outraFunction;
+        vm.onClickBotao = onClickBotao;
+        vm.outraFunction = outraFunction;
 
-        $scope.salvar = salvar;
-        $scope.limpar = limpar;
-        $scope.excluir = excluir;
-        $scope.editar = editar;
-        $scope.getStyleDaLinha = getStyleDaLinha;
+        vm.salvar = salvar;
+        vm.limpar = limpar;
+        vm.excluir = excluir;
+        vm.editar = editar;
+        vm.getStyleDaLinha = getStyleDaLinha;
 
-        // Declaração de funções
         function onClickBotao() {
-            alert("Opa, funcao 1");
+            console.log('Opa, funcao 1');
         }
 
         function outraFunction() {
-            alert("Opa, funcao 2");
+            console.log('Opa, funcao 2');
         }
 
         function salvar() {
-            if ($scope.formPessoa.$invalid) {
-                angular.forEach($scope.formPessoa.$error, function (errorFields) {
+            if (vm.formPessoa.$invalid) {
+                angular.forEach(vm.formPessoa.$error, function (errorFields) {
                     for (var i = 0; i < errorFields.length; i++) {
                         errorFields[i].$setTouched();
                     }
@@ -69,9 +67,9 @@
                 return;
             }
 
-            var dataNascimentoFormatada = $filter('date')($scope.pessoa.dataNascimento, 'dd/MM/yyyy');
+            var dataNascimentoFormatada = $filter('date')(vm.pessoa.dataNascimento, 'dd/MM/yyyy');
 
-            $scope.listaPessoas.push($scope.pessoa);
+            vm.listaPessoas.push(vm.pessoa);
             limpar();
             PdAlertService.showSuccess(dataNascimentoFormatada);
         }

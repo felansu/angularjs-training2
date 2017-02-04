@@ -40,20 +40,26 @@
     <script src="app/filters/pd-maiusculas.filter.js"></script>
 
 </head>
-<body ng-app="pdCurso" class="container" ng-controller="Index8Controller">
+<body ng-app="pdCurso" class="container" ng-controller="Index8Controller as vm" ng-cloak>
 
 <!-- parte superior -->
 <div>
-    <a ui-sref="cadastroCarro">Cadastro carro</a>
-    <a ui-sref="pesquisaCarro">Pesquisa carro</a>
+    <!--<a ui-sref="cadastroCarro">Cadastro carro</a>-->
+    <!--<a ui-sref="pesquisaCarro">Pesquisa carro</a>-->
 </div>
 
 <div>
+    <!--<md-button class="md-raised md-primary"-->
+    <!--ng-click="alterarRota('cadastroCarro')">Cadastro-->
+    <!--</md-button>-->
+    <!--<md-button class="md-raised md-primary"-->
+    <!--ng-click="alterarRota('pesquisaCarro')">Pesquisa-->
+    <!--</md-button>-->
     <md-button class="md-raised md-primary"
-               ng-click="alterarRota('cadastroCarro')">Cadastro
+               ng-click="vm.alterarRota('cadastroProduto')">Cadastro
     </md-button>
     <md-button class="md-raised md-primary"
-               ng-click="alterarRota('pesquisaCarro')">Pesquisa
+               ng-click="vm.alterarRota('pesquisaProduto')">Pesquisa
     </md-button>
 </div>
 

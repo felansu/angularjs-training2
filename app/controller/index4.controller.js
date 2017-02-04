@@ -5,33 +5,33 @@
         .module('pdCurso')
         .controller('IndexController', IndexController);
 
-    IndexController.$inject = ['$scope'];
-
+    /*@ngInject*/
     function IndexController($scope) {
+        var vm = this;
 
-        $scope.cssDaDiv = {};
-        $scope.cssDaDiv.width = '150px';
-        $scope.cssDaDiv.height = '150px';
+        vm.cssDaDiv = {};
+        vm.cssDaDiv.width = '150px';
+        vm.cssDaDiv.height = '150px';
 
-        $scope.classeCss = '';
+        vm.classeCss = '';
 
-        $scope.$watch('cor', onWatchCor);
+        $scope.$watch('vm.cor', onWatchCor);
 
         function onWatchCor(newValue, oldValue) {
             if (newValue === oldValue) {
                 return;
             }
 
-            $scope.cssDaDiv.backgroundColor = newValue;
+            vm.cssDaDiv.backgroundColor = newValue;
 
             var newValueString = newValue.toString();
 
             if (newValueString === '1') {
-                $scope.classeCss = 'div1';
+                vm.classeCss = 'div1';
             } else if (newValueString === '2') {
-                $scope.classeCss = 'div2';
+                vm.classeCss = 'div2';
             } else {
-                $scope.classeCss = 'div3';
+                vm.classeCss = 'div3';
             }
         }
     }

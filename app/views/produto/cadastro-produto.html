@@ -1,0 +1,48 @@
+<form name="formProduto" novalidate ng-submit="vm.salvar()">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <span ng-bind="vm.title"></span>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group"
+                         ng-class="{'has-error':formProduto.descricao.$invalid && formProduto.descricao.$touched}">
+                        <label for="descricao">Descrição</label>
+                        <input id="descricao"
+                               type="text"
+                               class="form-control"
+                               ng-model="vm.produto.descricao" ,
+                               name="descricao"
+                               required>
+                        <div class="help-block"
+                             ng-messages="formProduto.descricao.$error"
+                             ng-if="formProduto.descricao.$invalid && formProduto.descricao.$touched">
+                            <div ng-messages-include="app/templates/ng-messages.html"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group"
+                         ng-class="{'has-error':formProduto.valor.$invalid && formProduto.valor.$touched}">
+                        <label for="valor">Valor</label>
+                        <input id="valor" type="text"
+                               class="form-control"
+                               ng-model="vm.produto.valor"
+                               name="valor"
+                               required>
+                        <div class="help-block"
+                             ng-messages="formProduto.valor.$error"
+                             ng-if="formProduto.valor.$invalid && formProduto.valor.$touched">
+                            <div ng-messages-include="app/templates/ng-messages.html"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <button class="btn btn-primary" type="submit">Salvar</button>
+            <button class="btn btn-warning" type="button" ng-click="vm.limpar()">Limpar</button>
+        </div>
+    </div>
+</form>

@@ -5,9 +5,14 @@
         .module('pdCurso')
         .controller('Index8Controller', IndexController);
 
-    function IndexController($scope, $state) {
+    /*@ngInject*/
+    function IndexController($state, $rootScope) {
 
-        $scope.alterarRota = alterarRota;
+        var vm = this;
+
+        $rootScope.listaProdutos = [];
+
+        vm.alterarRota = alterarRota;
 
         function alterarRota(state) {
             $state.go(state);

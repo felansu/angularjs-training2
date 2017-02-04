@@ -5,21 +5,22 @@
         .module('pdCurso')
         .controller('Index6Controller', IndexController);
 
-    IndexController.$inject = ['$scope', '$rootScope'];
-
+    /*@ngInject*/
     function IndexController($scope, $rootScope) {
-        $scope.dispararEvento = dispararEvento;
+
+        var vm = this;
+
+        vm.dispararEvento = dispararEvento;
 
         // Escuta evento onTesteEvent que cheguem em rootScope
         $rootScope.$on('onTesteEvent', onTesteEvent);
 
         // Escuta evento onTesteEvent que cheguem em $scope
         // $scope.$on('onTesteEvent', onTesteEvent);
-
         function onTesteEvent(event, data) {
             // Para de ouvir este evento
             // $scope.preventDefault();
-            console.log(data);
+            console.log(event + '\n' + data);
         }
 
         function dispararEvento() {

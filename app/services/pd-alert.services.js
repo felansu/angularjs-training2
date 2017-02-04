@@ -1,23 +1,31 @@
-angular.module('pdCurso')
-    .service('PdAlertService', PdAlertService);
+(function () {
+    'use strict';
 
-function PdAlertService(toastr) {
-    this.showSuccess = showSuccess;
-    this.showError = showError;
-    this.showInfo = showInfo;
+    angular
+        .module('pdCurso')
+        .service('PdAlertService', ServiceName);
 
-    function showSuccess(mensagem, titulo) {
-        titulo = titulo || 'Ok';
-        toastr.success(mensagem, titulo);
+    /* @ngInject */
+    function ServiceName(toastr) {
+
+        this.showSuccess = showSuccess;
+        this.showError = showError;
+        this.showInfo = showInfo;
+
+        function showSuccess(mensagem, titulo) {
+            titulo = titulo || 'Ok';
+            toastr.success(mensagem, titulo);
+        }
+
+        function showError(mensagem, titulo) {
+            titulo = titulo || 'Ok';
+            toastr.error(mensagem, titulo);
+        }
+
+        function showInfo(mensagem, titulo) {
+            titulo = titulo || 'Ok';
+            toastr.info(mensagem, titulo);
+        }
     }
 
-    function showError(mensagem, titulo) {
-        titulo = titulo || 'Ok';
-        toastr.error(mensagem, titulo);
-    }
-
-    function showInfo(mensagem, titulo) {
-        titulo = titulo || 'Ok';
-        toastr.info(mensagem, titulo);
-    }
-}
+})();
