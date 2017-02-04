@@ -40,16 +40,27 @@
     <!-- Imports externos -->
     <script src="app/config/pd-app.module.js"></script>
     <script src="app/config/pd-rotas.config.js"></script>
+    <script src="app/controller/index10.controller.js"></script>
     <script src="app/services/pd-alert.services.js"></script>
     <script src="app/filters/pd-maiusculas.filter.js"></script>
     <script src="arquitetura/directives/pd-hello-world/pd-hello-world.directive.js"></script>
+    <script src="arquitetura/directives/pd-input-text/pd-input-text.directives.js"></script>
 
 </head>
-<body ng-app="pdCurso" class="container" ng-cloak>
+<body ng-app="pdCurso" class="container" ng-cloak ng-controller="Index10Controller as vm">
 
 <div>
     <pd-hello-world></pd-hello-world>
     <div pd-hello-world></div>
+    <hr>
+    <pd-input-text
+            label="Nome"
+            ng-model="vm.pessoa.nome"
+            ng-required="true">
+
+    </pd-input-text>
+
+    {{vm.pessoa.nome}}
 </div>
 
 </body>
