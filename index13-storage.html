@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Title</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="node_modules/angular-toastr/dist/angular-toastr.css">
+    <link rel="stylesheet" href="node_modules/angular-ui-grid/ui-grid.css">
+
+    <!-- Font Awesome-->
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
+
+    <!-- Angular Material-->
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
+
+    <!-- Angular Loading Bar-->
+    <link rel="stylesheet" href="node_modules/angular-loading-bar/build/loading-bar.css">
+    <link rel="stylesheet" href="app/css/pd-apps.css">
+
+    <!-- Imports internos -->
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="node_modules/oclazyload/dist/ocLazyLoad.js"></script>
+    <script src="node_modules/angular-messages/angular-messages.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.js"></script>
+    <script src="node_modules/angular-aria/angular-aria.js"></script>
+    <script src="node_modules/angular-toastr/dist/angular-toastr.js"></script>
+    <script src="node_modules/angular-toastr/dist/angular-toastr.tpls.js"></script>
+    <script src="node_modules/angular-ui-grid/ui-grid.js"></script>
+    <script src="node_modules/angular-material/angular-material.js"></script>
+    <script src="node_modules/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="node_modules/angular-local-storage/dist/angular-local-storage.js"></script>
+
+    <!-- Imports externos -->
+    <script src="app/config/pd-app.module.js"></script>
+    <script src="app/config/pd-rotas.config.js"></script>
+    <script src="app/controller/index11.controller.js"></script>
+    <script src="app/services/pd-alert.services.js"></script>
+    <script src="app/services/pd-storage.service.js"></script>
+    <script src="app/filters/pd-maiusculas.filter.js"></script>
+    <script src="arquitetura/directives/pd-hello-world/pd-hello-world.directive.js"></script>
+    <script src="arquitetura/directives/pd-input-text/pd-input-text.directives.js"></script>
+    <script src="arquitetura/directives/pd-select/pd-select.js"></script>
+    <script src="arquitetura/directives/pd-painel/pd-painel.directive.js"></script>
+    <script src="arquitetura/directives/pd-crud/pd-crud.directive.js"></script>
+
+</head>
+<body ng-app="pdCurso" class="container" ng-cloak ng-controller="Index11Controller as vm">
+
+<pd-crud titulo="opa"
+         salvar="vm.salvar()"
+         remover="vm.remover()">
+    <pd-crud-body>
+        <form>
+            <div>
+                <pd-input-text
+                        label="Nome"
+                        ng-model="vm.pessoa.nome"
+                        ng-required="true">
+                </pd-input-text>
+
+                <pd-select label="Sexo"
+                           ng-model="vm.pessoa.sexo"
+                           ng-required="true"
+                           provider="vm.sexo">
+                </pd-select>
+            </div>
+        </form>
+    </pd-crud-body>
+    <pd-crud-footer>
+
+    </pd-crud-footer>
+</pd-crud>
+</body>
+</html>

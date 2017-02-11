@@ -15,7 +15,7 @@
 				tipo: '@',
 				icone: '@',
 				salvar: '&',
-				excluir: '&',
+				remover: '&',
 				limpar: '&'
 			},
 			transclude: {
