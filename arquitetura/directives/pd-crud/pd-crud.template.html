@@ -8,8 +8,10 @@
         <div ng-transclude="header"></div>
     </div>
     <div class="panel-body">
-        <div ng-transclude="body">
-        </div>
+        <form name="{{formName}}">
+            <div ng-transclude="body">
+            </div>
+        </form>
     </div>
     <div class="panel-footer">
         <md-button class="md-primary md-raised" ng-click="salvar()">Salvar</md-button>

@@ -58,21 +58,19 @@
          salvar="vm.salvar()"
          remover="vm.remover()">
     <pd-crud-body>
-        <form>
-            <div>
-                <pd-input-text
-                        label="Nome"
-                        ng-model="vm.pessoa.nome"
-                        ng-required="true">
-                </pd-input-text>
+        <div>
+            <pd-input-text
+                    label="Nome"
+                    ng-model="vm.pessoa.nome"
+                    ng-required="true">
+            </pd-input-text>
 
-                <pd-select label="Sexo"
-                           ng-model="vm.pessoa.sexo"
-                           ng-required="true"
-                           provider="vm.sexo">
-                </pd-select>
-            </div>
-        </form>
+            <pd-select label="Sexo"
+                       ng-model="vm.pessoa.sexo"
+                       ng-required="true"
+                       provider="vm.sexo">
+            </pd-select>
+        </div>
     </pd-crud-body>
     <pd-crud-footer>
 

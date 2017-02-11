@@ -43,7 +43,7 @@
 			}
 
 			function definirValoresDefault() {
-				scope.formName = 'pdForm' + scope.id;
+				scope.formName = 'pdForm' + scope.$id;
 				scope.classTipo = 'panel-' + (scope.tipo || 'default');
 				scope.textTitulo = scope.titulo || 'Sem titulo';
 				scope.classIcone = 'fa fa-' + (scope.icone || 'battery');
